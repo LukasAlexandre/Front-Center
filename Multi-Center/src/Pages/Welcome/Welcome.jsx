@@ -1,67 +1,171 @@
-// Welcome page
-import React from 'react';
-import { Background, WelcomeContainer, WelcomeHeader, Greeting, WelcomeText, FeaturesList, FeatureItem, ButtonsContainer, StyledButton, TipSection, HelpLink } from './StylesWelcome';
+// src/pages/Welcome.jsx
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  UserPlus,
+  LogIn,
+  MessageCircle,
+  Users,
+  ClipboardList,
+  TrendingUp,
+} from "lucide-react";
+
+import {
+  WelcomeContainer,
+  BackgroundBloom,
+  Orb,
+  ContentWrapper,
+  LogoImage,
+  LogoText,
+  Title,
+  Subtitle,
+  OptionsGrid,
+  OptionCard,
+  OptionIcon,
+  OptionTitle,
+  OptionDescription,
+  OptionButton,
+  CTASection,
+  CTAButtons,
+  CTAButton,
+  InfoSection,
+  FeaturesGrid,
+  FeatureItem,
+  FeatureIcon,
+  FeatureText,
+  Footer,
+} from "./StylesWelcome";
+
+// Logo opcional via imagem removido (arquivo não existe em src/assets). Use apenas o texto/branding.
 
 const Welcome = () => {
-  const userName = 'Colaborador'; // Placeholder; in real app, fetch from auth or props
+  const navigate = useNavigate();
 
   return (
-    <>
-      <Background />
-      <WelcomeContainer>
-      <WelcomeHeader>
-        <h1>Bem-vindo ao MultiCenter!</h1>
-        <Greeting>Olá, {userName}!</Greeting>
-        <WelcomeText>
-          Bem-vindo à sua nova casa para se conectar com a equipe, RH e gestores. 
-          Aqui, tudo fica mais simples: converse, peça ajuda e acompanhe o que importa para o seu dia a dia no trabalho.
-        </WelcomeText>
-      </WelcomeHeader>
+    <WelcomeContainer>
+      <BackgroundBloom />
+      <Orb $size={340} $left="-120px" $top="-100px" />
+      <Orb $size={220} $right="-60px" $top="80px" />
+      <Orb $size={160} $left="60px" $bottom="120px" />
+      <ContentWrapper>
+  <LogoText>Multi Center</LogoText>
 
-      <FeaturesList>
-        <FeatureItem>
-          <span role="img" aria-label="RH">❤️</span>
-          <div>
-            <strong>Falar com o RH</strong>: Peça férias, tire dúvidas sobre salário ou documentos – e veja o status em tempo real.
-          </div>
-        </FeatureItem>
-        <FeatureItem>
-          <span role="img" aria-label="Gestor">📢</span>
-          <div>
-            <strong>Conversar com o Gestor</strong>: Abra pedidos de materiais, relate problemas ou compartilhe ideias sobre o time.
-          </div>
-        </FeatureItem>
-        <FeatureItem>
-          <span role="img" aria-label="Fórum">💬</span>
-          <div>
-            <strong>Trocar ideias com todos</strong>: No fórum, discuta sugestões e boas práticas com colegas de outros setores.
-          </div>
-        </FeatureItem>
-        <FeatureItem>
-          <span role="img" aria-label="Acompanhar">✅</span>
-          <div>
-            <strong>Acompanhar pedidos</strong>: Crie um chamado rápido (como corrigir ponto ou consertar equipamento) e siga o progresso até o fim.
-          </div>
-        </FeatureItem>
-      </FeaturesList>
+        <Title>Central de Comunicação</Title>
+        <Subtitle>
+          Um hub elegante de comunicação entre colaboradores e gestão — ideal
+          para abrir chamados, tirar dúvidas, solicitar férias e acompanhar
+          respostas em tempo real.
+        </Subtitle>
 
-      <ButtonsContainer>
-        <StyledButton variant="primary" onClick={() => {/* Handle new user registration */}}>
-          Novo por aqui? Crie sua conta
-        </StyledButton>
-        <StyledButton variant="secondary" onClick={() => {/* Handle login */}}>
-          Já tem acesso? Entre agora
-        </StyledButton>
-      </ButtonsContainer>
+        <OptionsGrid>
+          <OptionCard>
+            <OptionIcon><UserPlus /></OptionIcon>
+            <OptionTitle>Criar Conta</OptionTitle>
+            <OptionDescription>Cadastre-se para começar a usar o sistema.</OptionDescription>
+            <OptionButton onClick={() => navigate("/register")}>
+              Começar
+            </OptionButton>
+          </OptionCard>
 
-      <TipSection>
-        <p><strong>Dica rápida</strong>: Se você é gestor, vai ver um painel especial com todos os pedidos da equipe ao entrar. Para o time de RH ou suporte, há ferramentas extras para ajudar todo mundo.</p>
-        <HelpLink href="/help" target="_blank" rel="noopener noreferrer">
-          Precisa de mais ajuda? Clique em "Ajuda" no menu superior para um tour guiado. Vamos tornar o trabalho mais leve juntos! 😊
-        </HelpLink>
-      </TipSection>
-      </WelcomeContainer>
-    </>
+          <OptionCard>
+            <OptionIcon><LogIn /></OptionIcon>
+            <OptionTitle>Entrar</OptionTitle>
+            <OptionDescription>Faça login para acessar o sistema.</OptionDescription>
+            <OptionButton onClick={() => navigate("/login")}>
+              Entrar
+            </OptionButton>
+          </OptionCard>
+
+          <OptionCard>
+            <OptionIcon><MessageCircle /></OptionIcon>
+            <OptionTitle>Abrir Chamado</OptionTitle>
+            <OptionDescription>Problema ou dúvida? Abra um chamado em minutos.</OptionDescription>
+            <OptionButton onClick={() => navigate("/support")}>
+              Abrir
+            </OptionButton>
+          </OptionCard>
+
+          <OptionCard>
+            <OptionIcon><Users /></OptionIcon>
+            <OptionTitle>Comunidade</OptionTitle>
+            <OptionDescription>Converse com colegas e troque soluções.</OptionDescription>
+            <OptionButton onClick={() => navigate("/community")}>
+              Acessar
+            </OptionButton>
+          </OptionCard>
+
+          <OptionCard>
+            <OptionIcon><ClipboardList /></OptionIcon>
+            <OptionTitle>Minhas Solicitações</OptionTitle>
+            <OptionDescription>Acompanhe o status de tudo o que você abriu.</OptionDescription>
+            <OptionButton onClick={() => navigate("/requests")}>
+              Ver
+            </OptionButton>
+          </OptionCard>
+
+          <OptionCard>
+            <OptionIcon><TrendingUp /></OptionIcon>
+            <OptionTitle>Métricas</OptionTitle>
+            <OptionDescription>Indicadores e SLA para gestão e melhoria contínua.</OptionDescription>
+            <OptionButton onClick={() => navigate("/analytics")}>
+              Ver métricas
+            </OptionButton>
+          </OptionCard>
+        </OptionsGrid>
+
+        <CTASection>
+          <h3>Pronto pra acelerar sua comunicação interna?</h3>
+          <p>Cadastre-se em segundos ou faça login para continuar.</p>
+          <CTAButtons>
+            <CTAButton onClick={() => navigate("/register")} $variant="primary">
+              <UserPlus size={18} /> Criar conta
+            </CTAButton>
+            <CTAButton onClick={() => navigate("/login")} $variant="ghost">
+              <LogIn size={18} /> Entrar
+            </CTAButton>
+          </CTAButtons>
+        </CTASection>
+
+        <InfoSection>
+          <h4>Por que usar?</h4>
+          <FeaturesGrid>
+            <FeatureItem>
+              <FeatureIcon><ClipboardList /></FeatureIcon>
+              <FeatureText>
+                <strong>Chamados organizados</strong>
+                <span>Fluxo simples para abrir, priorizar e resolver.</span>
+              </FeatureText>
+            </FeatureItem>
+
+            <FeatureItem>
+              <FeatureIcon><MessageCircle /></FeatureIcon>
+              <FeatureText>
+                <strong>Mensageria ágil</strong>
+                <span>Converse com o time certo sem ruído.</span>
+              </FeatureText>
+            </FeatureItem>
+
+            <FeatureItem>
+              <FeatureIcon><TrendingUp /></FeatureIcon>
+              <FeatureText>
+                <strong>Visão gerencial</strong>
+                <span>KPIs e SLA para decisões rápidas.</span>
+              </FeatureText>
+            </FeatureItem>
+
+            <FeatureItem>
+              <FeatureIcon><Users /></FeatureIcon>
+              <FeatureText>
+                <strong>Transparência</strong>
+                <span>Acompanhe o progresso do início ao fim.</span>
+              </FeatureText>
+            </FeatureItem>
+          </FeaturesGrid>
+        </InfoSection>
+
+        <Footer>© {new Date().getFullYear()} Multi Center • Engenharia de Produto & Software</Footer>
+      </ContentWrapper>
+    </WelcomeContainer>
   );
 };
 
