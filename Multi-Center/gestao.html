@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Multi Center — Tela Gestor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <!-- simple logo -->
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="20" height="20" rx="4" fill="#0b6b8a"/>
+            <path d="M6 12h12" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M6 8h8" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="brand-text">  
+          <strong>Multi Center</strong>
+          <small>Sistema de Solicitações</small>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <div class="search" role="search">
+          <input id="searchInput" placeholder="Pesquisar tickets, colaborador ou resumo..." aria-label="Pesquisar tickets" />
+          <button id="clearSearch" type="button" title="Limpar" aria-label="Limpar pesquisa">✕</button>
+        </div>
+
+        <div class="filters separator" aria-hidden="true"></div>
+
+        <div class="filters">
+          <select id="filterDashboard" title="Filtrar dashboards">
+            <option value="all">Todos os Dashboards</option>
+            <option value="pending">Pendentes</option>
+            <option value="in_progress">Em Andamento</option>
+            <option value="resolved">Resolvido</option>
+            <option value="closed">Fechado</option>
+          </select>
+
+          <select id="filterStatus" title="Filtrar por status">
+            <option value="all">Todos os Status</option>
+            <option value="pending">Pendente</option>
+            <option value="in_progress">Em Análise</option>
+            <option value="resolved">Resolvido</option>
+            <option value="closed">Fechado</option>
+          </select>
+
+          <select id="filterCategory" title="Filtrar por categoria">
+            <option value="all">Todas as Categorias</option>
+            <option value="ponto">Ponto</option>
+            <option value="ferias">Férias</option>
+            <option value="gestao">Gestão</option>
+            <option value="rh">RH</option>
+            <option value="outros">Outros</option>
+          </select>
+        </div>
+
+        <div class="user">
+          <div class="user-name">Olá, Gestor</div>
+          <div class="avatar" title="Gestor" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="8" r="3" fill="#fff" />
+              <path d="M4 20c1.8-3.3 5.4-5 8-5s6.2 1.7 8 5" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <h2>Tickets Abertos</h2>
+          <span id="openCount" class="open-count">0</span>
+        </div>
+
+        <ul id="ticketList" class="ticket-list" aria-live="polite">
+          <!-- tickets injected by JS -->
+        </ul>
+      </aside>
+
+      <section class="detail">
+        <div class="detail-header">
+          <div class="ticket-id" id="detailTicketId">Selecione um ticket</div>
+          <div class="detail-actions">
+            <button id="btnAccept" type="button" class="btn primary" disabled>Aceitar</button>
+            <button id="btnRequestInfo" type="button" class="btn outline" disabled>Solicitar mais info</button>
+            <button id="btnClose" type="button" class="btn danger" disabled>Fechar</button>
+          </div>
+        </div>
+
+        <div class="detail-body">
+          <div class="cards">
+            <div class="card card-requester">
+              <div class="card-title">Solicitante</div>
+              <div id="detailRequester" class="card-content">
+                <div class="muted">Nenhum ticket selecionado</div>
+              </div>
+            </div>
+
+            <div class="card card-case">
+              <div class="card-title">Problema / Caso</div>
+              <div id="detailCase" class="card-content">
+                <div class="muted">Nenhum ticket selecionado</div>
+              </div>
+            </div>
+
+            <div class="card card-status">
+              <div class="card-title">Status</div>
+              <div id="detailStatus" class="card-content">
+                <div class="muted">-</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-and-notes">
+            <div class="timeline">
+              <div class="section-title">Atividades</div>
+              <ul id="detailTimeline" class="timeline-list">
+                <li class="muted">Nenhuma atividade disponível</li>
+              </ul>
+            </div>
+
+            <div class="notes">
+              <div class="section-title">Observações</div>
+              <div id="detailNotes" class="notes-content muted">Selecione um ticket para ver as observações.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-footer">
+          <div class="last-updated muted" id="detailUpdated">Última atualização: —</div>
+          <div class="footer-actions">
+            <button id="btnExport" type="button" class="btn plain" disabled>Exportar</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Modal simples -->
+    <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="modal-card">
+        <h3>Solicitar mais informações</h3>
+        <textarea id="modalMessage" placeholder="Digite a solicitação para o colaborador..." rows="6" aria-label="Mensagem para colaborador"></textarea>
+        <div class="modal-actions">
+          <button id="modalCancel" type="button" class="btn outline">Cancelar</button>
+          <button id="modalSend" type="button" class="btn primary">Enviar</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="app-footer">
+      <small>Multi Center — Sistema interno • © 2025</small>
+    </footer>
+  </div>  
+
+  <script src="script.js"></script>
+</body>
+</html>
