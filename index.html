@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>TelaLogin</title>
+</head>
+<body>
+    <h1>Grupo MultiLaser</h1>
+
+    <div class="container">
+        <div class="box">
+            <div class="content">
+                <form class="card" autocomplete="off" aria-label="Formulario de login">
+                    <h2>Multi Center</h2>
+                    <div class="form-group">
+                        <input type="text" name="matricula" id="matricula" placeholder="Matricula" required>
+                        <input type="text" name="Colaborador" id="Colaborador" placeholder="COlaborador" required>
+                        <input type="text" name="email" id="email" placeholder="E-mail" required>
+                        <input type="text" name="gestor" id="gesto" placeholder="Gestor" required>
+                        <input type="password" name="senha" id="senha" placeholder="Crie uma senha" required>
+                        <input type="password" name="confirmar-senha" id="confirmar-senha" placeholder="Confirme a senha" required>
+                    </div>
+
+                    <button type="Enviar" class="btn">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+            
+        <button class="btn-voltar" type="button" aria-label="Voltar à pagina inicial" onclick="location.href='index.html'">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205 3 1m1.5.5-1.5-.5M6.75 7.364V3h-3v18m3-13.636 10.5-3.819" />
+            </svg>
+            <span class="btn-text">Home</span>
+        </button>
+</body>
+</html>
