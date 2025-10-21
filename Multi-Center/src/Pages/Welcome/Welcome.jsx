@@ -15,20 +15,18 @@ import {
   BackgroundBloom,
   Orb,
   ContentWrapper,
-  LogoImage,
+  LogoBadge,
   LogoText,
   Title,
   Subtitle,
+  HelperText,
   OptionsGrid,
   OptionCard,
   OptionIcon,
   OptionTitle,
   OptionDescription,
   OptionButton,
-  CTASection,
-  CTAButtons,
-  CTAButton,
-  InfoSection,
+  InfoPanel,
   FeaturesGrid,
   FeatureItem,
   FeatureIcon,
@@ -48,29 +46,25 @@ const Welcome = () => {
       <Orb $size={220} $right="-60px" $top="80px" />
       <Orb $size={160} $left="60px" $bottom="120px" />
       <ContentWrapper>
-  <LogoText>Multi Center</LogoText>
-
-        <Title>Central de Comunicação</Title>
-        <Subtitle>
-          Um hub elegante de comunicação entre colaboradores e gestão — ideal
-          para abrir chamados, tirar dúvidas, solicitar férias e acompanhar
-          respostas em tempo real.
-        </Subtitle>
+        <LogoBadge />
+        <Title>Multi Center</Title>
+        <Subtitle>Sistema de Gestão de Funcionários</Subtitle>
+        <HelperText>Acesse sua conta ou cadastre-se como novo funcionário</HelperText>
 
         <OptionsGrid>
           <OptionCard>
             <OptionIcon><UserPlus /></OptionIcon>
-            <OptionTitle>Criar Conta</OptionTitle>
-            <OptionDescription>Cadastre-se para começar a usar o sistema.</OptionDescription>
+            <OptionTitle>Funcionário Novo</OptionTitle>
+            <OptionDescription>Primeiro acesso? Crie sua conta para começar a utilizar o sistema</OptionDescription>
             <OptionButton onClick={() => navigate("/register")}>
-              Começar
+              Cadastrar-se
             </OptionButton>
           </OptionCard>
 
           <OptionCard>
             <OptionIcon><LogIn /></OptionIcon>
-            <OptionTitle>Entrar</OptionTitle>
-            <OptionDescription>Faça login para acessar o sistema.</OptionDescription>
+            <OptionTitle>Já tenho Login</OptionTitle>
+            <OptionDescription>Já possui uma conta? Faça login para acessar o sistema.</OptionDescription>
             <OptionButton onClick={() => navigate("/login")}>
               Entrar
             </OptionButton>
@@ -113,21 +107,11 @@ const Welcome = () => {
           </OptionCard>
         </OptionsGrid>
 
-        <CTASection>
-          <h3>Pronto pra acelerar sua comunicação interna?</h3>
-          <p>Cadastre-se em segundos ou faça login para continuar.</p>
-          <CTAButtons>
-            <CTAButton onClick={() => navigate("/register")} $variant="primary">
-              <UserPlus size={18} /> Criar conta
-            </CTAButton>
-            <CTAButton onClick={() => navigate("/login")} $variant="ghost">
-              <LogIn size={18} /> Entrar
-            </CTAButton>
-          </CTAButtons>
-        </CTASection>
+        {/* CTA suprimido para herói limpo, como no mock */}
 
-        <InfoSection>
-          <h4>Por que usar?</h4>
+        <InfoPanel>
+          <h4>Bem-vindo ao Multi Center!</h4>
+          <p className="lead">Olá, Colaborador! Bem-vindo à sua nova casa para se conectar com a equipe, RH e gestores. Aqui, tudo fica mais simples: converse, peça ajuda e acompanhe o que importa para o seu dia a dia no trabalho.</p>
           <FeaturesGrid>
             <FeatureItem>
               <FeatureIcon><ClipboardList /></FeatureIcon>
@@ -146,6 +130,42 @@ const Welcome = () => {
             </FeatureItem>
 
             <FeatureItem>
+
+            <OptionCard>
+              <OptionIcon><MessageCircle /></OptionIcon>
+              <OptionTitle>Abrir Chamado</OptionTitle>
+              <OptionDescription>Problema ou dúvida? Abra um chamado em minutos.</OptionDescription>
+              <OptionButton onClick={() => navigate("/support")}>
+                Abrir
+              </OptionButton>
+            </OptionCard>
+
+            <OptionCard>
+              <OptionIcon><Users /></OptionIcon>
+              <OptionTitle>Comunidade</OptionTitle>
+              <OptionDescription>Converse com colegas e troque soluções.</OptionDescription>
+              <OptionButton onClick={() => navigate("/community")}>
+                Acessar
+              </OptionButton>
+            </OptionCard>
+
+            <OptionCard>
+              <OptionIcon><ClipboardList /></OptionIcon>
+              <OptionTitle>Minhas Solicitações</OptionTitle>
+              <OptionDescription>Acompanhe o status de tudo o que você abriu.</OptionDescription>
+              <OptionButton onClick={() => navigate("/requests")}>
+                Ver
+              </OptionButton>
+            </OptionCard>
+
+            <OptionCard>
+              <OptionIcon><TrendingUp /></OptionIcon>
+              <OptionTitle>Métricas</OptionTitle>
+              <OptionDescription>Indicadores e SLA para gestão e melhoria contínua.</OptionDescription>
+              <OptionButton onClick={() => navigate("/analytics")}>
+                Ver métricas
+              </OptionButton>
+            </OptionCard>
               <FeatureIcon><TrendingUp /></FeatureIcon>
               <FeatureText>
                 <strong>Visão gerencial</strong>
@@ -161,7 +181,7 @@ const Welcome = () => {
               </FeatureText>
             </FeatureItem>
           </FeaturesGrid>
-        </InfoSection>
+  </InfoPanel>
 
         <Footer>© {new Date().getFullYear()} Multi Center • Engenharia de Produto & Software</Footer>
       </ContentWrapper>
