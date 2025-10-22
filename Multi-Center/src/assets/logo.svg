@@ -1,0 +1,23 @@
+<svg width="112" height="112" viewBox="0 0 112 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Brand blue tile -->
+  <rect width="112" height="112" rx="20" fill="#0052FF"/>
+  
+  <!-- Rounded continuous M (matching the reference icon) -->
+  <!-- Geometry notes:
+       - Start at left leg baseline (x=20, y=84)
+       - First arch up to x=44 then back down to baseline
+       - Middle valley sits lower creating the flowing M shape
+       - Second arch mirrors the first ending at x=92, y=84
+  -->
+  <path
+    d="M20 84
+       C20 34 40 34 44 84
+       S64 104 68 84
+       S92 34 92 84"
+    fill="none"
+    stroke="#FFFFFF"
+    stroke-width="20"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>
